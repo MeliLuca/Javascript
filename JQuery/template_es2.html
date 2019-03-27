@@ -1,0 +1,71 @@
+<html>
+
+    <head>
+        <title>Galleria Jquery</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script >
+            var imageList = $("img");
+
+            $("document").ready(function(){
+
+                $("#prevbutton").click(function(){
+                    $("img:first").fadeOut(1000, function(){
+                        $("body").prepend($("img:last"));
+                        $("img:first").fadeIn(1000);
+                    });
+                });
+
+                $("#nextbutton").click(function(){
+                    $("img:first").fadeOut(1000, function(){
+                        $("body").append($("img:first"));
+                        $("img:first").fadeIn(1000);
+                    });
+                });
+                $("img").hide();
+                $("img:first").show();
+            });
+        </script>
+        <style>
+            img{
+                position: absolute;
+                left: 10vw;
+                top: 10vh;
+                min-height: 300px;
+                min-width: 300px;
+                max-width: 500px;
+                max-height: 500px;
+            }
+            #prevbutton{
+                background-color:whitesmoke;
+                cursor: pointer;
+                position: absolute;
+                left:5vw;
+                top: 41vh;
+            }   
+            #prevbutton:hover{
+                background-color: rgb(206, 209, 27);
+            }
+            #nextbutton{
+                background-color:whitesmoke;
+                cursor: pointer;
+                position: absolute;
+                left: 42vw;
+                top: 41vh;
+            }   
+            #nextbutton:hover{
+                background-color: rgb(206, 209, 27);
+            }   
+        </style>
+    </head>
+    <body>
+
+        <img src="https://siviaggia.files.wordpress.com/2018/10/ponte-calatrava-venezia.jpg?w=1080" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlv6FT9878SCb4msLd9sg9rOFs9-XE4_s6HB2f3AuEh3tj_DB4ug" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX8II3ZqvCHpm8GZwmT6Skqjl0R6xPHWwzFVocZg_UOK8QH2GmLA" />
+        <img src="https://www.travel365.it/foto/3-venezia-mattina.jpg" />
+
+        <button id="prevbutton">Prev</button>
+        <button id="nextbutton">Next</button>
+
+    </body>
+</html>
