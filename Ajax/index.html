@@ -3,65 +3,7 @@
 <head>
 <title>Introduzione a AJAX</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-/*INSERIRE QUI IL CODICE JAVASCRIPT*/
-
-var session_id;
-var codice;
-
-function requestImage(){
-	$.ajax({
-		url:'http://www.dais.unive.it/~cosmo/esercitazione3/captcha.php?callback=?&getIdentifier',
-		type: 'GET',
-		dataType: 'jsonp',
-	}).then(function(data){
-		session_id= data.id;
-		return 	 $.ajax({
-					url: ' http://www.dais.unive.it/~cosmo/esercitazione3/captcha.php?callback=?&getImage&id='+ session_id,
-					type: 'GET',
-					dataType: 'jsonp',
-				});
-	}).done(function(data){
-		document.getElementById('captcha').src = 'http://www.dais.unive.it/~cosmo/esercitazione3/' + data.url;
-		sendCaptcha();
-	}).fail(function(){
-		console.log('richeista fallita');
-	});
-}
-
-function sendCaptcha(){
-	var buttonclick = $.Deferred();
-	$('#ok').click(function(){
-		console.log("sto aspettando il codice ");
-		buttonclick.resolve( codice= $("#captcha_code").val());
-		console.log(codice);
-	});
-	buttonclick.then(function(){
-		return $.ajax({
-				url:'http://www.dais.unive.it/~cosmo/esercitazione3/captcha.php?callback=?&sendCode&id='+session_id+'&code='+codice,
-				type: 'POST',
-				dataType:'jsonp',
-				});
-		}).done(function(data){
-			console.log("verifica");
-			if(data.auth == true){
-				$("body").remove();
-				var body= document.createElement("body");
-				var text= document.createElement("h1");
-				text.innerHTML="Autenticazione riuscita";
-				document.body=body;
-				body.append(text);
-			}else{
-				document.getElementById('captcha_code').value= " ";
-				requestImage();
-			}
-		});
-	}
-
-	$(document).ready(function(){
-    requestImage();
-	});
-</script>
+<script src= "esercitazione.js"></script>
 <style>
 	img
 	{
