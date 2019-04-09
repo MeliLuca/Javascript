@@ -1,34 +1,24 @@
+// Implementare il gioco ”caccia alle talpe”. Il gioco prevede una griglia di lato N dove si alternano casualmente erba, la
+// testa di una talpa, il fondoschiena di una talpa. Se il giocatore clicca l’erba non succede nulla, se clicca la testa di una
+// talpa ottiene 100 punti, se clicca il fondoschiena ne perde 200. Il gioco termina se il punteggio scende sotto 0 punti,
+// segnalando al giocatore che ha perso, o se sale oltre i 1000 punti, segnalando al giocatore che ha vinto. Il punteggio
+// deve essere sempre visibile. Si assuma di avere a disposizione le immagini grass.png, head.png, rear.png.
 
-var N= 10;
-var matrice=[];
+var symbols={"./Texture/faccia.jpg": 50, "./Texture/culo.jpeg": -200, "./Texture/erba.jpeg": 0};
+var N = 10;
+var score= 0;
 
-function crea_campo(){
-    var campo = document.createElement("TABLE");
-    campo.style.border = "solid";
-    
-    for(var i=0; i<N; i++){
-        var riga = document.createElement("TR");
-        riga.style.border = "solid";
-        riga.style.minHeight= "20px";
-        riga.style.minWidth= "20px";
-        campo.appendChild(riga);
-
-        for(var j=0; j<N; j++){
-            var colonna = document.createElement("TD");
-            colonna.style.border = "solid";
-            colonna.style.minHeight= "20px";
-            colonna.style.minWidth= "20px";
-            riga.appendChild(colonna);
-            
-        }
-    }
-    document.body.appendChild(campo);
+function creaTalpa(){
+  var talpa = document.createElement("img");
+  talpa.setAttribute("height", "40");
+  talpa.setAttribute("width", "40");
+  talpa.setAttribute("src", Object.keys(symbols)[Math.floor(Math.random()*3)]);
+  document.body.appendChild(talpa);
 }
 
-function crea_talpa(){
-    
-}
-
-window.onload = function(){
-    crea_campo();
+for(let i=0; i<N; i++){
+  for(let j=0; j<N; j++){
+    creaTalpa();
+  }
+  document.body.appendChild(document.createElement("br"));
 }

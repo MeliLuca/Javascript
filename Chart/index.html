@@ -5,23 +5,20 @@
         <script src="chart.js"></script>
     </head>
     <body>
-      
+
         <div class="chart_container" style="position: relative; height: 40vh; width: 40vw">
             <img id="italia" src="italia.jpg" >
             <canvas id="myChart" style= "width: max-content; height:40vh"></canvas>
-        </div> 
-    
+        </div>
+
     </body>
     <style>
-         img{
-           
+          img{
             position: absolute;
             z-index: -10;
-            clip: padding-box;
-            size: cover;
-            width: max-content;
-            height: max-content;
-
-        } 
+            display: block;
+            width: 100%;
+            height: auto
+        }
     </style>
 </html>
