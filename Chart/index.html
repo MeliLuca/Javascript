@@ -7,16 +7,21 @@
     <body>
       
         <div class="chart_container" style="position: relative; height: 40vh; width: 40vw">
-            <canvas id="myChart" width="40vw" height="40vh"></canvas>
+            <img id="italia" src="italia.jpg" >
+            <canvas id="myChart" style= "width: max-content; height:40vh"></canvas>
         </div> 
     
     </body>
     <style>
-        canvas{
-            background-image: url("italia.jpg");
-            background-clip: padding-box;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+         img{
+           
+            position: absolute;
+            z-index: -10;
+            clip: padding-box;
+            size: cover;
+            width: max-content;
+            height: max-content;
+
+        } 
     </style>
 </html>
