@@ -19,7 +19,7 @@ var menus = document.getElementsByClassName("menu");
 
 while(menus.length>0){
 	
-  var menu = menus[0];
+  var menu = menus[0];  
   var table = document.createElement("table");
   var total = document.createElement("div");
   total.innerHTML = "0";
