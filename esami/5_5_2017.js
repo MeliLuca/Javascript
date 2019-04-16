@@ -1,20 +1,17 @@
 window.onload=function(){
-     var headerList=[]
-    for(let i=1; i<7; i++){  
-        headerList[i]=document.getElementsByTagName('h'+ i.toString());
-    }
-    for(let i=1; i<7; i++){
-        var currHead= headerList[i];
+    for(let i=6; i>0; i--){
+        var currHead= document.getElementsByTagName('h'+ i.toString());
         for(let j=0; j< currHead.length; j++){
-            currHead[j].textContent=currHead[j].textContent.toUpperCase();
+            currHead[j].innerHTML=currHead[j].innerHTML.toUpperCase();
             if(i<6){
                 var level = i+1;
-                var nuovo = document.createElement('h' + level.toString());
-                console.log(nuovo)
+                var nuovo = document.createElement('h' + level);
                 nuovo.innerHTML= currHead[j].innerHTML;
-                currHead[j].parentNode.insertBefore(nuovo, currHead[j]);
-                currHead[j].parentNode.removeChild(currHead[j]);
+                currHead[j].parentNode.replaceChild(nuovo, currHead[j]);
             }
         }
-    }  
+    }
+    var stringa= 'ciao';
+    var array= stringa[0];
+    console.log(array)
 }
